@@ -2,7 +2,12 @@
 
 This is a VS Code extension which opens chrome and auto-login to the Salesforce instance that your workspace is connected to by using the force.json file on the root of your workspace.
 
-## STATE
+## Beta Installing
+1) Download [the packaged extension](https://github.com/dubyajaysmith/open-salesforce/blob/master/open-salesforce-0.0.1.vsix)
+2) Load it in VS Code like below:
+![beta install](https://i.imgur.com/McQoQK9.png)
+
+## State
 
 This works by running a command to open chrome to a SalesForce url with creds as params to auto-login like this: 
 
