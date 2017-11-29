@@ -14,7 +14,7 @@ OR
 
 
 ## Installing
-(Removing beta install to publish extension. will update with link.)
+[Published on the Market Place](https://marketplace.visualstudio.com/items?itemName=JamieSmith.open-salesforce)
 
 
 ## License
