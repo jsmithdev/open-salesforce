@@ -1,69 +1,56 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+/* jshint asi: true, esversion: 6, laxcomma: true */
 const vscode = require('vscode');
 const jsonfile = require('jsonfile')
+const activate = (context) => {
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-function activate(context) {
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    const openSalesforce = vscode.commands.registerCommand('extension.openSalesforce', function () {
-        // The code you place here will be executed every time your command is executed
+    const openSalesforce = vscode.commands.registerCommand('extension.openSalesforce', () => {
 
         vscode.workspace.findFiles('force.json').then(x => {
             
-            let filePath = x[0].fsPath
+            const filePath = x[0].fsPath
             
-            jsonfile.readFile(filePath, function (err, obj) {
-                if (err){console.error(err)}
-
-                const un = obj.username
-                const pw = String(obj.password).substring(0, obj.password.length - 24)
-                const url = obj.url
-
-                const platform = process.platform;
-                const browserName = 'chrome'
-                const path = `${url}?un=${un}&pw=${pw}`
-
-                const exec = require('child_process').exec;
-                let cmd = ''
-
-                switch (platform) {
-                    case 'win32':
-                        cmd = browserName
-                            ? `start ${browserName} "${path}"`
-                            : `start "" "${path}"`;
-                        break;
-                    case 'darwin':
-                        cmd = browserName
-                            ? `open "${path}" -a "${browserName}"`
-                            : `open "${path}"`;
-                        break;
-                    default:
-                        cmd = browserName
-                            ? `${browserName} "${path}"`
-                            : `xdg-open "${path}"`;
-                        break;
+            jsonfile.readFile(filePath, (err, obj) => {
+                if(err){
+                    console.error(err)
                 }
 
-                exec(cmd, function (err, stdout, stderr) {
-                    if (err) {
-                        vscode.window.showErrorMessage(`Error: ${err}`);
-                    }
-                });
+                //If token is 25 or token length is 25, sub 25
+                let sub = obj.token === 25 ? obj.token : obj.token.length
+                //If sub not 25, sub 24
+                sub = sub === 25 ? 25 : 24
 
+                const url = obj.url,
+                    un = obj.username,
+                    pw = String(obj.password).substring(0, obj.password.length - sub),
+                    browserName = `chrome`,
+                    path = `${url}?un=${un}&pw=${pw}`,
+                    exec = require('child_process').exec;
+
+                switch (process.platform) {
+                    case 'win32': {
+                        const cmd = browserName ?
+                            `start ${browserName} "${path}"` : `start "" "${path}"`
+                        exec(cmd)
+                        break
+                    }
+                    case 'darwin': {
+                        const cmd = browserName ?
+                            `open "${path}" -a "${browserName}"` : `open "${path}"`
+                        exec(cmd)
+                        break
+                    }
+                    default: {
+                        const cmd = browserName ?
+                            `${browserName} "${path}"` : `xdg-open "${path}"`
+                        exec(cmd)
+                        break
+                    }
+                }
             })
         })
-        .catch(x => console.error(x))
     });
 
     context.subscriptions.push(openSalesforce);
 }
-exports.activate = activate;
 
-// this method is called when your extension is deactivated
-function deactivate() {}
-exports.deactivate = deactivate;
+exports.activate = activate;

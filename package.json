@@ -2,7 +2,7 @@
     "name": "open-salesforce",
     "displayName": "Open Salesforce",
     "description": "Opens browser to salesforce instance used in project.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "jamiesmith",
     "engines": {
         "vscode": "^1.18.0"
@@ -21,10 +21,6 @@
                 "title": "Open SalesForce"
             }
         ]
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
         "typescript": "^2.6.1",
