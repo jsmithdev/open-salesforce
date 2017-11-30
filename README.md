@@ -1,10 +1,16 @@
-# open-salesforce
-This is a VS Code extension which opens chrome and auto-logins you into the Salesforce instance that your workspace is connected to by using the creds that are already present in the force.json file (auto-generated on the root of your workspace by SalesForce extensions).
+# Open SalesForce
+This is a VS Code extension which adds two commands to your Command Palette:
 
-Unfortunately, Salesforce security tokens can be 24 or 25 in length <b>and</b> are combined to your password in the force.json file so...
+Open SalesForce : Opens chrome and auto-logins you in, placing you at the setup menu of the Salesforce instance that your workspace is connected to.
+
+Open VisualForce : Opens the VisualForce page you currently have in your editor.
+
+It can do this by using the credentials that are already present in the force.json file that is auto-generated on the root of your workspace by SalesForce extensions.
+
+Salesforce security tokens can be 24 or 25 in length <b>and</b> are combined to your password in the force.json file so...
 
 #### If this doesn't auto-log you in, it probably means your token is 25 in length
-You can add your  `token: value`  if you know it or you can put `25` in you force.json file:
+You can add your  `token: value`  if you know it OR you can put `25` in you force.json file:
 
 `"token": "jYnNYYANFeuvYX8OueH3bN6Q1"`
 
@@ -14,7 +20,7 @@ OR
 
 
 ## Installing
-[Published on the Market Place](https://marketplace.visualstudio.com/items?itemName=JamieSmith.open-salesforce)
+[Published Free on the Market Place](https://marketplace.visualstudio.com/items?itemName=JamieSmith.open-salesforce)
 
 
 ## License
