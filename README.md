@@ -23,6 +23,10 @@ OR
 [Published Free on the Market Place](https://marketplace.visualstudio.com/items?itemName=JamieSmith.open-salesforce)
 
 
+## Dev
+[On GitHub](https://github.com/dubyajaysmith/open-salesforce)
+
+
 ## License
 All rights reserved.
 
