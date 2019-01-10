@@ -1,4 +1,13 @@
+# DEPRECATED
+
+This complimented the [ForceCode](https://github.com/celador/ForceCode) extension but development picked up on that repo and these things are now features of ForceCode. If you can't / don't want to go full SFDX in your SF development, ForceCode is a great tool. Please go install/update that and remove this if installed. 
+
+The rest is left for educational, history, etc. purposes.
+
+---
+
 # Open SalesForce
+
 This is a VS Code extension which adds two commands to your Command Palette:
 
 Open SalesForce : Opens chrome and auto-logins you in, placing you at the setup menu of the Salesforce instance that your workspace is connected to.
